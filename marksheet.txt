@@ -1,0 +1,6 @@
+0 1 2 3 - STD_A
+1 2 3 4 - STD_B
+2 3 4 5 - STD_C
+3 4 2 6 - STD_D  
+| | | |
+A B C D -> FAC
