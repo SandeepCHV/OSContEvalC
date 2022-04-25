@@ -854,7 +854,7 @@ void editorMoveCursor(int key) {
           E.cx -= 2;
         }
         break;
-      case ARROW_RIGHT:
+      case ARROW_RIGHT:		//Predetermined size of file
         if (E.cx != 6) {
           E.cx += 2;
         }
