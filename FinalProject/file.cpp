@@ -33,7 +33,7 @@ int main(){
 	struct user_info current_user_info;
 	int subject_count = count_sub_size();
 	fstream current_fio;
-	current_fio.open("user_list.txt",ios::in);
+	current_fio.open("Database/user_list.txt",ios::in);
 	
 	while(current_fio){
 		string current_buffer;
@@ -82,7 +82,7 @@ string command_creation(string execname, string name, string uid, string subject
 int count_sub_size(){
 	fstream fio;
 	int count = 0;
-	fio.open("user_list.txt",ios::in);
+	fio.open("Database/user_list.txt",ios::in);
 	string buffer;
 	
 	while(fio){

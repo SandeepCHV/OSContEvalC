@@ -24,7 +24,10 @@ int main(int argc,char *argv[]){
         string username;
         string password;
         switch(console_input){
-            case 1  :   system("sudo adduser");
+            case 1  :   
+                        cout<<"Enter the username"<<endl;
+                        cin>>username;
+                        system("sudo adduser");
                         break;
 
             default :   cout<<"Invalid output"<<endl;
