@@ -15,10 +15,7 @@ struct user_info{
 };
 
 void fill_user_data(struct user_info *,char *);
-string command_creation(string,string,string,string);
-
-
-int count_sub_size();
+string command_creation(string,string,string);
 enum status{
 	Admin = 1,
 	Faculty = 2,
@@ -28,12 +25,12 @@ enum status{
 
 int main(){
 	//int current_userid = getuid();		//Getting the value of the current user
-	int current_userid = 1001;
+	int current_userid = 1002;
 	string user_id = to_string(current_userid);
 	struct user_info current_user_info;
-	int subject_count = count_sub_size();
+
 	fstream current_fio;
-	current_fio.open("Database/user_list.txt",ios::in);
+	current_fio.open("user_list.txt",ios::in);
 	
 	while(current_fio){
 		string current_buffer;
@@ -56,8 +53,9 @@ int main(){
 		case Faculty	: 	cout<<"Hello, you are faculty";
 							break;
 		case Student	: 	
-							command_line = command_creation("student",current_user_info.user_name,to_string(current_user_info.user_id),to_string(subject_count));
+							command_line = command_creation("student",current_user_info.user_name,to_string(current_user_info.user_id));
 							command = command_line.c_str();
+							//cout<<command;
 							system(command);
 							break;
 		default			: 	cout<<"Your are not a part of the system";
@@ -74,26 +72,7 @@ void fill_user_data(struct user_info *user_data, char line_buffer[]){
 	user_data->user_status = stoi(token);
 }
 
-string command_creation(string execname, string name, string uid, string subject_number){
-	string file_path = "./" + execname + " " + name + " " + uid + " " + subject_number;
+string command_creation(string execname, string name, string uid){
+	string file_path = "./" + execname + " " + name + " " + uid;
 	return file_path;
 }
-
-int count_sub_size(){
-	fstream fio;
-	int count = 0;
-	fio.open("Database/user_list.txt",ios::in);
-	string buffer;
-	
-	while(fio){
-		getline(fio,buffer);
-		if(strstr(buffer.c_str(),"2")){
-			count++;
-		}
-	}
-
-	fio.close();
-	return count;
-}
-	
-	
