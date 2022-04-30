@@ -24,7 +24,7 @@ enum status{
 
 string file_path_creation(string, string, string);
 
-int main(int argc[],char *argv[]){
+int main(int argc,char *argv[]){
 	
 	struct user_info current_user_info;
 	current_user_info.user_name = argv[1];

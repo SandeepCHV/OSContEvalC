@@ -28,7 +28,7 @@ enum status{
 
 int main(){
 	//int current_userid = getuid();		//Getting the value of the current user
-	int current_userid = 1000;
+	int current_userid = 1001;
 	string user_id = to_string(current_userid);
 	struct user_info current_user_info;
 	int subject_count = count_sub_size();
