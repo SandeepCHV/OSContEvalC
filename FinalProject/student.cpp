@@ -61,6 +61,7 @@ int main(int argc,char *argv[]){
 			strcpy(file_path_array,file_path.c_str());
 			//cout<<file_path<<endl;
 			read_file_marks[i][j] = open(file_path_array,O_RDONLY);
+			//cout<<read_file_marks[i][j];
 		}
 	}
 
@@ -69,8 +70,13 @@ int main(int argc,char *argv[]){
 	char data[4][4];
 	for(int i =0; i<subject_count;i++){
 		for(int j=0;j<4;j++){
-			read(read_file_marks[i][j],&readStream[i],sizeof(char));
-			data[j][i] = readStream[i];
+			int bytes_read = read(read_file_marks[i][j],&readStream[i],sizeof(char));
+			cout<<bytes_read;
+			if(bytes_read){
+				data[j][i] = readStream[i];
+			}else{
+				data[j][i] = '-';
+			}
 		}
 	}
 
