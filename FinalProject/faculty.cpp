@@ -32,7 +32,6 @@ int main(int argc,char *argv[]){
 	//cout<<current_user_info.user_id<<endl;
 	int subject_count = 4;
 	string student_name[4];
-
 	fstream fin;
 	fin.open("user_list.txt");
 	int i =0;
@@ -103,11 +102,13 @@ int main(int argc,char *argv[]){
 			write(output_file," ",strlen(" "));
 			}
 		if(i<4){
-			char *name_array = new char[100];
+			char name_array[100];
+			char final_array[100] ="- ";
+			int size = student_name[i].size();
 			strcpy(name_array,student_name[i].c_str());
-			//cout<<name_array<<strlen(name_array)<<endl;
-			write(output_file,"- ",sizeof("- "));
-			write(output_file,name_array,strlen(name_array));
+			strcat(final_array,name_array);
+			cout<<final_array<<strlen(final_array)<<endl;
+			write(output_file,final_array,strlen(final_array));
 		}
 		if(i<3)
 		write(output_file,"\n",strlen("\n"));
@@ -116,9 +117,12 @@ int main(int argc,char *argv[]){
 	for(int i =0; i<subject_count; i++){
 		write(output_file,"| ",strlen("| "));
 	}
+	close(output_file);
+
+
 	bool Inprogram = true;
 	while(Inprogram){
-		cout<<"Do you want to see your marks?(Y/N)"<<endl;
+		cout<<"Do you want to enter your marks?(Y/N)"<<endl;
 		string input;
 		cin>>input;
 		if(input=="Y"){
@@ -126,11 +130,58 @@ int main(int argc,char *argv[]){
 			system(command);
 		}else if(input=="N"){
 			cout << "Logging you out"<<endl;
-			exit(0);
+			Inprogram = false;
 		}else{
 				cout<<"Wrong input"<<endl;
 		}
 	}
+
+	fstream finput;
+	finput.open("./Output/output.txt");
+	char writedata[4][4];
+	char buffer_array[100];
+	for(int i=0;i<4;i++){
+		string buffer;
+		getline(finput,buffer);
+		//cout<<buffer<<endl;
+		strcpy(buffer_array,buffer.c_str());
+		char *token = strtok(buffer_array," ");
+		for(int j=0;j<4;j++){
+			//cout<<token<<" ";
+			writedata[i][j] = *token;
+			token= strtok(NULL," ");
+		}
+		//cout<<endl;
+	}
+	for(int i =0;i<4;i++){
+		for(int j=0;j<4;j++){
+			cout<<writedata[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+
+	for(int i=0; i<subject_count; i++){
+		for(int j=0;j<4;j++){
+			string file_path = file_path_creation(student_name[i], to_string(j+1), "Student");
+			//cout<<file_path<<endl;
+			char file_path_array[100];
+			strcpy(file_path_array,file_path.c_str());
+			//cout<<file_path<<endl;
+			read_file_marks[i][j] = open(file_path_array,O_WRONLY);
+			//cout<<read_file_marks[i][j];
+		}
+	}
+	char *writeStream = new char[1];
+	for(int i =0; i<subject_count;i++){
+		for(int j=0;j<4;j++){
+			*writeStream = writedata[i][j];
+			write(read_file_marks[i][j],&writeStream,sizeof(char));
+			//cout<<bytes_read;
+		}
+	}
+
+
+	
 }	
 
 void fill_user_data(struct user_info *user_data, char line_buffer[]){
@@ -141,6 +192,8 @@ void fill_user_data(struct user_info *user_data, char line_buffer[]){
 	token = strtok(NULL," ");
 	user_data->user_status = stoi(token);
 }
+
+
 
 string file_path_creation(string name, string subject_number, string status = "Student"){
 	string file_path = "./" + status + "/" + name + "/" + subject_number + ".txt";
