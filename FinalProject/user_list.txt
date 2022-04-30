@@ -3,7 +3,7 @@
 1010 Sandeep 3
 1008 Goutham 3
 1009 Yaswanth 3
-1000 Mahendran 2
-1000 Prabhleen 2
-1000 Utkarsha 2
-1000 Naresh 2
+1011 Kranti 2
+1012 Bhargav 2
+1015 Githin 2
+1014 Vraj 2

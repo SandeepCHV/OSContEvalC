@@ -48,9 +48,11 @@ int main(int argc,char *argv[]){
 			i++;
 		}
 	}
-	/*for(int i = 0; i<4;i++){
+	for(int i = 0; i<4;i++){
 		cout<<student_name[i]<<endl;
-	}*/
+	}
+
+	exit(0);
 	int read_file_marks[subject_count][4];
 	//Opening files to store file desciptor into read_file_marks
 	for(int i=0; i<subject_count; i++){
@@ -103,11 +105,13 @@ int main(int argc,char *argv[]){
 			write(output_file," ",strlen(" "));
 			}
 		if(i<4){
-			char *name_array = new char[100];
+			char name_array[100];
+			char final_array[100] ="- ";
+			int size = student_name[i].size();
 			strcpy(name_array,student_name[i].c_str());
-			//cout<<name_array<<strlen(name_array)<<endl;
-			write(output_file,"- ",sizeof("- "));
-			write(output_file,name_array,strlen(name_array));
+			strcat(final_array,name_array);
+			//cout<<final_array<<strlen(final_array)<<endl;
+			write(output_file,final_array,strlen(final_array));
 		}
 		if(i<3)
 		write(output_file,"\n",strlen("\n"));

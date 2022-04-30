@@ -32,9 +32,23 @@ int main(int argc,char *argv[]){
 	//cout<<current_user_info.user_id<<endl;
 	int subject_count = 4;
 	string student_name[4];
+	
+	int writeIndex = 0;
+	switch(current_user_info.user_id){
+		case 1011: writeIndex = 0;
+					break;
+		case 1012: writeIndex = 1;
+					break;
+		case 1014: writeIndex = 2;
+					break;
+		case 1015: writeIndex = 3;
+					break;
+		default:	break;
+	}
 	fstream fin;
 	fin.open("user_list.txt");
 	int i =0;
+
 	while(fin){
 		string line;
 		getline(fin,line);
@@ -47,6 +61,7 @@ int main(int argc,char *argv[]){
 			i++;
 		}
 	}
+	
 	/*for(int i = 0; i<4;i++){
 		cout<<student_name[i]<<endl;
 	}*/
@@ -63,7 +78,7 @@ int main(int argc,char *argv[]){
 			//cout<<read_file_marks[i][j];
 		}
 	}
-
+	
 	//We are reading the content of the files
 	char *readStream = new char[subject_count];
 	char data[4][4];
@@ -161,26 +176,22 @@ int main(int argc,char *argv[]){
 	}
 
 	for(int i=0; i<subject_count; i++){
-		for(int j=0;j<4;j++){
-			string file_path = file_path_creation(student_name[i], to_string(j+1), "Student");
-			//cout<<file_path<<endl;
+			string file_path = file_path_creation(student_name[i], to_string(writeIndex+1), "Student");
+			cout<<file_path<<endl;
 			char file_path_array[100];
 			strcpy(file_path_array,file_path.c_str());
 			//cout<<file_path<<endl;
-			read_file_marks[i][j] = open(file_path_array,O_WRONLY);
+			read_file_marks[i][writeIndex] = open(file_path_array,O_WRONLY);
+			//cout<<read_file_marks<<" ";
 			//cout<<read_file_marks[i][j];
-		}
 	}
 	char *writeStream = new char[1];
 	for(int i =0; i<subject_count;i++){
-		for(int j=0;j<4;j++){
-			*writeStream = writedata[i][j];
-			write(read_file_marks[i][j],&writeStream,sizeof(char));
+			*writeStream = writedata[i][writeIndex];
+			//cout<<writeStream;
+			write(read_file_marks[i][writeIndex],writeStream,sizeof(char));
 			//cout<<bytes_read;
-		}
 	}
-
-
 	
 }	
 

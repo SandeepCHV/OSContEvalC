@@ -1,5 +1,5 @@
-1 1 1 1 - Gagan
-1 1 1 1 - Sandeep
-2 5 2 3 - Goutham
-3 4 5 5 - Yaswanth
+2 9 3 8 - Gagan
+3 9 3 8 - Sandeep
+4 9 3 8 - Goutham
+3 9 3 8 - Yaswanth
 | | | | 

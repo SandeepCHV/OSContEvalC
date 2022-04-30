@@ -25,7 +25,7 @@ enum status{
 
 int main(){
 	//int current_userid = getuid();		//Getting the value of the current user
-	int current_userid = 1000;
+	int current_userid = 1012;
 	string user_id = to_string(current_userid);
 	struct user_info current_user_info;
 
@@ -52,6 +52,7 @@ int main(){
 							break;
 		case Faculty	: 	command_line = command_creation("faculty",current_user_info.user_name,to_string(current_user_info.user_id));
 							command = command_line.c_str();
+							//cout<<command;
 							system(command);
 							break;
 		case Student	: 	
