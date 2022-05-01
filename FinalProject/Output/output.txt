@@ -1,5 +1,5 @@
-0 0 0 0 - Gagan
-0 0 0 0 - Sandeep
-0 0 0 0 - Goutham
-0 0 0 0 - Yaswanth
+1 4 5 1 - Gagan
+2 7 3 6 - Sandeep
+3 8 8 3 - Goutham
+5 3 6 8 - Yaswanth
 | | | | K B V G 

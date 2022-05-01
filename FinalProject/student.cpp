@@ -114,7 +114,7 @@ int main(int argc,char *argv[]){
 	for(int i =0; i<subject_count; i++){
 		write(output_file,"| ",strlen("| "));
 	}
-	write(output_file,"K B V G ",strlen("K B V G "));
+	write(output_file,"\nK B V G ",strlen("\nK B V G "));
 	close(output_file);
 
 	bool Inprogram = true;
