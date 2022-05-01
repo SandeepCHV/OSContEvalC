@@ -26,13 +26,9 @@ string file_path_creation(string, string, string);
 
 int main(int argc,char *argv[]){
 	struct user_info current_user_info;
-	current_user_info.user_name = argv[1];
-	//cout<<current_user_info.user_name<<endl;
-	current_user_info.user_id = stoi(argv[2]);
-	//cout<<current_user_info.user_id<<endl;
 	int subject_count = 4;
 	string student_name[4];
-
+	
 	fstream fin;
 	fin.open("user_list.txt");
 	int i =0;
@@ -51,8 +47,6 @@ int main(int argc,char *argv[]){
 	/*for(int i = 0; i<4;i++){
 		cout<<student_name[i]<<endl;
 	}*/
-
-	exit(0);
 	int read_file_marks[subject_count][4];
 	//Opening files to store file desciptor into read_file_marks
 	for(int i=0; i<subject_count; i++){
@@ -120,6 +114,9 @@ int main(int argc,char *argv[]){
 	for(int i =0; i<subject_count; i++){
 		write(output_file,"| ",strlen("| "));
 	}
+	write(output_file,"K B V G ",strlen("K B V G "));
+	close(output_file);
+
 	bool Inprogram = true;
 	while(Inprogram){
 		cout<<"Do you want to see your marks?(Y/N)"<<endl;
