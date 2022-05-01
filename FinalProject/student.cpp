@@ -48,9 +48,9 @@ int main(int argc,char *argv[]){
 			i++;
 		}
 	}
-	for(int i = 0; i<4;i++){
+	/*for(int i = 0; i<4;i++){
 		cout<<student_name[i]<<endl;
-	}
+	}*/
 
 	exit(0);
 	int read_file_marks[subject_count][4];

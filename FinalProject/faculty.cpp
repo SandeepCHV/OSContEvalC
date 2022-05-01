@@ -122,7 +122,7 @@ int main(int argc,char *argv[]){
 			int size = student_name[i].size();
 			strcpy(name_array,student_name[i].c_str());
 			strcat(final_array,name_array);
-			cout<<final_array<<strlen(final_array)<<endl;
+			//cout<<final_array<<strlen(final_array)<<endl;
 			write(output_file,final_array,strlen(final_array));
 		}
 		if(i<3)
@@ -168,16 +168,16 @@ int main(int argc,char *argv[]){
 		}
 		//cout<<endl;
 	}
-	for(int i =0;i<4;i++){
+	/*for(int i =0;i<4;i++){
 		for(int j=0;j<4;j++){
 			cout<<writedata[i][j]<<" ";
 		}
 		cout<<endl;
-	}
+	}*/
 
 	for(int i=0; i<subject_count; i++){
 			string file_path = file_path_creation(student_name[i], to_string(writeIndex+1), "Student");
-			cout<<file_path<<endl;
+			//cout<<file_path<<endl;
 			char file_path_array[100];
 			strcpy(file_path_array,file_path.c_str());
 			//cout<<file_path<<endl;
